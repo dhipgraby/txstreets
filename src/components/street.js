@@ -3100,7 +3100,7 @@ export class Street extends Phaser.Scene {
 					window.mainVue.$toast.error(
 						{
 							component: Notification,
-							props: {
+							props: { 
 								title: i18n.t("messages.slow-down"),
 								html: i18n.t("messages.slow-down-2"),
 							}, 
