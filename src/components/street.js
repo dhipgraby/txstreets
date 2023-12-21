@@ -3106,7 +3106,7 @@ export class Street extends Phaser.Scene {
 							}, 
 						},
 						{
-							position: "bottom-center",
+							position: "bottom-center", 
 						}
 					);
 					return false;
