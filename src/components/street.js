@@ -3103,7 +3103,7 @@ export class Street extends Phaser.Scene {
 							props: {
 								title: i18n.t("messages.slow-down"),
 								html: i18n.t("messages.slow-down-2"),
-							},
+							}, 
 						},
 						{
 							position: "bottom-center",
