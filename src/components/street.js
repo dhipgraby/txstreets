@@ -270,7 +270,7 @@ export class Street extends Phaser.Scene {
 		ledger.setDepth(this.topDepth + 10);
 		ledger.setInteractive({ useHandCursor: true });
 		ledger.on("pointerup", () => {
-			window.open("https://bit.ly/3sYNWE8");
+			window.open("https://shop.ledger.com/?r=8392f9a2b239&tracker=houseofledger");
 			if (userSettings.globalSettings.animations.value) ledger.anims.stop();
 			ledger.destroy();
 			localStorage.setItem("ledgerDone", true);
