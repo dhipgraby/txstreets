@@ -43,7 +43,7 @@ export const donateData = {
     <br/>
     Feel free to give your feed back about what features or services will be good to have.						
     <br/>
-    <a href="https://n8u0k9wgiua.typeform.com/to/yxcnqZou" target="_blank">Feed back HERE</a>
+    <a href="https://n8u0k9wgiua.typeform.com/to/YTsWkmFc" target="_blank">Feed back HERE</a>
     </div>
     `
 }
