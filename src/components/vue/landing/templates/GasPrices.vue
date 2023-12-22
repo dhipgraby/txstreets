@@ -229,11 +229,11 @@ $light-color: #cccccc;
 
 	}
 	.gas-estimate-container {
+		border: solid 1px #5d69d8;
 		position: relative;
 		width: 100%;
 		display: flex;
 		flex: 1;
-		align-items: center;
 		justify-content: center;
 		.gas-estimate {
 			width: 100%;

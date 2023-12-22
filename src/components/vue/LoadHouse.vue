@@ -3,12 +3,12 @@
         <div v-if="title" @click="toggleVisibility" class="message-header" style="cursor: pointer">
             <p>                
                 {{ title }}
-                <a v-if="link" :href="link" target="_blank" style="font-weight: normal">Visit</a>
+                <a v-if="link" :href="link" target="_blank" style="font-weight: normal">Source</a>
             </p>
             <span class="fas" :class="visible ? 'fa-chevron-down' : 'fa-chevron-up'"></span>
         </div>
         <div :class="{ collapsed: !visible }" class="message-body content" v-html="html"></div>
-        <div class="houselink">
+        <div class="houselink ta-l">
             <a v-if="link" :href="link" target="_blank" style="font-weight: normal">{{ title }}</a>
         </div>
         <button v-if="!visible" @click="toggleVisibility" class="button show-button is-info">Show Text</button>

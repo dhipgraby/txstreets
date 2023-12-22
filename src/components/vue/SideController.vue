@@ -422,6 +422,26 @@ export default Vue.extend({
 			};
 			this.createWindowData(data);
 		},
+		houseWindow: function (key, house) {
+			let components = [];
+			components.push({
+				name: "LoadHouse",
+				key: key,
+				props: {
+					house: house,
+				},
+			});
+			let data = {
+				key: key,
+				title: house.title,
+				components: components,
+				styles: {
+					width: "35rem",
+					"text-align": "center",
+				},
+			};
+			this.createWindowData(data);
+		},
 		wikiWindow: function (title, paths) {
 			let key = paths.join("-").hashCode();
 			let components = [];

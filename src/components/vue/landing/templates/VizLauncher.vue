@@ -280,8 +280,7 @@ export default {
 		top: 0;
 		left: 0;
 		background: rgba($color: #1f1f1f, $alpha: 0.8);
-		z-index: 0;
-		backdrop-filter: blur(5px);
+		z-index: 0;		
 	}
 	.launch-bg {
 		border-radius: 0 !important;
