@@ -20,7 +20,10 @@
 				</div>
 				<div v-if="!$root.loading">
 					<div class="launcher-container">
-
+						<div class="headerTitle">
+							<h1 class="mainTitle">Live Blockchain Visualizer</h1>
+							<p class="mainTitle">Select a Blockchain to visualize real time activity</p>
+						</div>
 						<!-- LAUNCHER -->
 						<div class="launcher-box">
 							<button @click="launch()" class="launchBtn bluegradientBtn"><span>LAUNCH STREETS</span></button>
