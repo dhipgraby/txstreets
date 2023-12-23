@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import { config, userSettings, charConfig } from "./config.js";
 import blockFactories from "./blocks.js";
+import { aboutOptimisticRollup, aboutBlockchain, aboutSegWit } from "../data/content.js";
 import {
 	mirrorX,
 	toRes,
@@ -378,11 +379,11 @@ export class Street extends Phaser.Scene {
 				let height = gameObject.getData("id");
 				this.vue.blockWindow(height);
 			} else if (type == "stoplight") {
-				this.vue.wikiWindow(i18n.t("general.blockchain"), ["common/blockchain"]);
+				this.vue.houseWindow("blockchain", aboutBlockchain);
 			} else if (type == "rollup") {
-				this.vue.wikiWindow(i18n.t("general.optimisticRollup"), ["common/optimisticRollup"]);
+				this.vue.houseWindow("rollups", aboutOptimisticRollup);
 			} else if (type == "segwit") {
-				this.vue.wikiWindow("Segwit", ["common/segwit"]);
+				this.vue.houseWindow("Segwit", aboutSegWit);
 			} else if (type == "popup") {
 				if (gameObject.person) {
 					let txData = gameObject.person.getLineData("txData");
@@ -935,27 +936,37 @@ export class Street extends Phaser.Scene {
 		this.housePlans[houseObj.name].spawn = [houseX, houseY];
 	}
 
-	createHouse(name) {
-		let path =
-			this.config.ticker +
-			"/" +
-			name;
+	createHouse(houseObj) {
+		// let path =
+		// 	this.config.ticker +
+		// 	"/" +
+		// 	name;
 		let houseComponents = [];
-		if (this.housePlans[name].dataSources && this.housePlans[name].dataSources.includes("wiki")) {
-			houseComponents.push({
-				name: "LoadWiki",
-				props: {
-					path,
-					initVisible: false,
-				},
-			});
-		}
+		// if (this.housePlans[name].dataSources && this.housePlans[name].dataSources.includes("wiki")) {
+		// 	houseComponents.push({
+		// 		name: "LoadWiki",
+		// 		props: {
+		// 			path,
+		// 			initVisible: false,
+		// 		},
+		// 	});
+		// }
 
-		if (this.housePlans[name].dataSources && this.housePlans[name].dataSources.includes("html")) {
+		// if (this.housePlans[name].dataSources && this.housePlans[name].dataSources.includes("html")) {
+		// 	houseComponents.push({
+		// 		name: "LoadHtml",
+		// 		props: {
+		// 			url: process.env.VUE_APP_STORAGE_URL + "info/houses/" + this.ticker + "_" + name + "/index.html",
+		// 		},
+		// 	});
+		// }
+
+		if (this.housePlans[houseObj.name].html) {
 			houseComponents.push({
-				name: "LoadHtml",
+				name: "LoadHouse",
 				props: {
-					url: process.env.VUE_APP_STORAGE_URL + "info/houses/" + this.ticker + "_" + name + "/index.html",
+					house: houseObj,
+					initVisible: false,
 				},
 			});
 		}
@@ -963,39 +974,39 @@ export class Street extends Phaser.Scene {
 		houseComponents.push({
 			name: "Transactions",
 			props: {
-				house: [name],
+				house: [houseObj.name],
 				ticker: this.config.ticker,
-				txsEnabled: this.housePlans[name]?.tracked,
-				plans: this.housePlans[name],
+				txsEnabled: this.housePlans[houseObj.name]?.tracked,
+				plans: this.housePlans[houseObj.name],
 			},
 		});
 
 		this.vue.windowData.push({
-			key: name,
-			title: this.housePlans[name].title,
+			key: houseObj.name,
+			title: this.housePlans[houseObj.name].title,
 			components: houseComponents,
 			styles: {
 				width: "45rem",
 				height: "45rem",
 			},
 		});
-		let doorColor = Phaser.Display.Color.HexStringToColor(this.housePlans[name].colors[0]).lighten(30).color;
+		let doorColor = Phaser.Display.Color.HexStringToColor(this.housePlans[houseObj.name].colors[0]).lighten(30).color;
 		let door = this.add.rectangle(0, 0, 110, 41, doorColor, 1);
-		door.name = name;
+		door.name = houseObj.name;
 		door.originalColor = doorColor;
 		door.setDepth(this.bridgeDepth);
 		door.setScale(config.resolution);
 		this.doors.add(door);
 
-		let logo = this.add.image(0, 0, "sheet", name + ".png", 40, 40);
-		if (typeof this.housePlans[name].colors[1] !== "undefined" && this.housePlans[name].colors[1]) {
-			if (this.housePlans[name].colors[1] === "lighten") {
+		let logo = this.add.image(0, 0, "sheet", houseObj.name + ".png", 40, 40);
+		if (typeof this.housePlans[houseObj.name].colors[1] !== "undefined" && this.housePlans[houseObj.name].colors[1]) {
+			if (this.housePlans[houseObj.name].colors[1] === "lighten") {
 				logo.setTint(doorColor);
 			} else {
-				logo.setTint("0x" + this.housePlans[name].colors[1]);
+				logo.setTint("0x" + this.housePlans[houseObj.name].colors[1]);
 			}
 		}
-		logo.name = name;
+		logo.name = houseObj.name;
 		logo.setDepth(this.topDepth + 5);
 		logo.setScale(config.resolution);
 		this.houseLogos.add(logo);
@@ -1005,11 +1016,11 @@ export class Street extends Phaser.Scene {
 			let houseOverlay = this.add.image(0, 0, getSheetKey("house_overlay.png"), "house_overlay.png");
 			houseOverlay.setScale(config.resolution);
 			houseOverlay.setDepth(this.topDepth + 5);
-			houseOverlay.name = name;
+			houseOverlay.name = houseObj.name;
 			house.overlay = houseOverlay;
 		}
-		house.setTint("0x" + this.housePlans[name].colors[0]);
-		house.name = name;
+		house.setTint("0x" + this.housePlans[houseObj.name].colors[0]);
+		house.name = houseObj.name;
 		house.setDepth(this.topDepth + 4);
 		house.setInteractive({ useHandCursor: true });
 		house.clickObject = "house";
@@ -1035,7 +1046,7 @@ export class Street extends Phaser.Scene {
 			}
 			this.housePlans[house.name] = house;
 			sideCount[house.side]++;
-			this.createHouse(house.name);
+			this.createHouse(house);
 		}
 
 		if (!houses.length) this.noHouses = true;
@@ -1057,7 +1068,7 @@ export class Street extends Phaser.Scene {
 			if (!moveList.length) {
 				if (status === "walkway") {
 					person.y -= toRes(70 / this.game.loop.actualFps);
-					if (person.y <= -100){
+					if (person.y <= -100) {
 						let hash = person.getData("txHash");
 						this.removeFollower(hash, 0);
 						person.bye();
@@ -1313,7 +1324,7 @@ export class Street extends Phaser.Scene {
 		}
 		delete this.txFollowers[hash];
 		this.txFollowersHashes.splice(this.txFollowersHashes.indexOf(hash), 1);
-		if(saveFollowers) this.saveFollowers();
+		if (saveFollowers) this.saveFollowers();
 		return true;
 	}
 

@@ -19,7 +19,7 @@ export default class Sign extends Phaser.GameObjects.Container {
 
 	resetAd() {
 		this.adText = this.scene.ticker === "ETH" ? "Your Ad Here!" : "Contribute Here";
-		this.adLink = this.scene.ticker === "ETH" && "https://n8u0k9wgiua.typeform.com/to/xT00e4FR"
+		this.adLink = this.scene.ticker === "ETH" && "https://n8u0k9wgiua.typeform.com/to/vkMqgKcC"
 
 		if (!this.adSprites) return;
 		for (let i = 0; i < this.adSprites.length; i++) {
@@ -190,7 +190,7 @@ export default class Sign extends Phaser.GameObjects.Container {
 					this.scene.vue.htmlWindow(
 						"ad-info",
 						"Your Ad Here",
-						`The community places ads here. You can too! <a href="https://n8u0k9wgiua.typeform.com/to/xT00e4FR" target="_blank">Click here</a> for more information.`
+						`The community places ads here. You can too! <a href="https://n8u0k9wgiua.typeform.com/to/vkMqgKcC" target="_blank">Click here</a> for more information.`
 					) :
 					this.scene.vue.htmlWindow(
 						donateData.key,

@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import { config, userSettings, charConfig, enabledConfig } from "./config.js";
+import { aboutBlockchain, aboutSegWit } from "../data/content.js";
 import blockFactories from "./blocks.js";
 import {
 	mirrorX,
@@ -270,7 +271,7 @@ export class Street extends Phaser.Scene {
 		ledger.setDepth(this.topDepth + 10);
 		ledger.setInteractive({ useHandCursor: true });
 		ledger.on("pointerup", () => {
-			window.open("https://bit.ly/3sYNWE8");
+			window.open("https://shop.ledger.com/?r=8392f9a2b239&tracker=houseofledger");
 			if (userSettings.globalSettings.animations.value) ledger.anims.stop();
 			ledger.destroy();
 			localStorage.setItem("ledgerDone", true);
@@ -1153,9 +1154,9 @@ export class Street extends Phaser.Scene {
 				let height = gameObject.getData("id");
 				this.vue.blockWindow(height);
 			} else if (type == "stoplight") {
-				this.vue.wikiWindow(i18n.t("general.blockchain"), ["common/blockchain"]);
+				this.vue.houseWindow("blockchain", aboutBlockchain);
 			} else if (type == "segwit") {
-				this.vue.wikiWindow("Segwit", ["common/segwit"]);
+				this.vue.houseWindow("Segwit", aboutSegWit);
 			} else if (type == "mweb") {
 				let height = gameObject.parentContainer.getData("id");
 				let key = "mweb-block-" + height;
@@ -1191,11 +1192,6 @@ export class Street extends Phaser.Scene {
 					},
 				};
 				this.vue.createWindowData(data);
-
-
-
-
-				// this.vue.wikiWindow("MWEB", ["LTC/mweb"]);
 			} else if (type == "popup") {
 				if (gameObject.person) {
 					let txData = gameObject.person.getLineData("txData");
@@ -3103,7 +3099,7 @@ export class Street extends Phaser.Scene {
 							props: {
 								title: i18n.t("messages.slow-down"),
 								html: i18n.t("messages.slow-down-2"),
-							}, 
+							},
 						},
 						{
 							position: "bottom-center",

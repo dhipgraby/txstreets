@@ -37,7 +37,7 @@
 									</span>
 									<span>{{ street.config.coinName }}</span>
 									<span
-										v-if="street.config.coinName !== 'Bitcoin' && street.config.coinName !== 'Ethereum' && street.config.coinName !== 'Bitcoin Cash'"
+										v-if="street.config.coinName === 'Monero' || street.config.coinName === 'Litecoin'"
 										class="soon">Coming soon</span>
 								</div>
 
@@ -414,6 +414,26 @@ export default Vue.extend({
 			let data = {
 				key: key,
 				title: title,
+				components: components,
+				styles: {
+					width: "35rem",
+					"text-align": "center",
+				},
+			};
+			this.createWindowData(data);
+		},
+		houseWindow: function (key, house) {
+			let components = [];
+			components.push({
+				name: "LoadHouse",
+				key: key,
+				props: {
+					house: house,
+				},
+			});
+			let data = {
+				key: key,
+				title: house.title,
 				components: components,
 				styles: {
 					width: "35rem",
