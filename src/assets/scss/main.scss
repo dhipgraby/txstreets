@@ -1,6 +1,8 @@
 @charset "utf-8";
 @import "~bulma/sass/utilities/initial-variables";
 @import "~bulma/sass/utilities/functions";
+@import "kencss";
+@import "particles";
 
 $tablet: 861px;
 
@@ -82,6 +84,12 @@ a.navbar-item.is-active,
 	text-align: -webkit-right !important;
 }
 
+.container-info {
+	background-color: #026cbd;
+	padding: 20px;
+	border-radius: 10px;
+}
+
 .contributeInner {
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -90,6 +98,68 @@ a.navbar-item.is-active,
 .relative {
 	position: relative;
 }
+
+.launchBtn *,
+.launchBtn {
+	font-size: 36px;
+	font-weight: 400;
+	padding: 20px 30px;
+	margin-bottom: 20px;
+	color: #fff;
+}
+
+.connectBtn {
+	font-size: 18px;
+	padding: 5px 20px;
+	font-weight: 400;
+	margin-right: 20px;
+	color: #e2e2e2;
+}
+
+.bluegradientBtn {
+	cursor: pointer;
+	text-decoration: none;
+	border-radius: 50px;
+	border: none;
+	position: relative;
+	background: rgb(7, 136, 187);
+	background-image: linear-gradient(45deg, black, transparent);
+	-webkit-backface-visibility: hidden;
+	box-shadow: 0px 5px 17px 0px black;
+	z-index: 1;
+	transition: 0.5s;
+}
+
+.bluegradientBtn:hover {
+	transform: scale(1.1);
+	box-shadow: 0px 0px 0px 0px rgb(0, 0, 0);
+	text-shadow: 0px 8px 4px #000;
+	color: white !important;
+}
+
+.bluegradientBtn:after {
+	position: absolute;
+	content: '';
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 50px;
+	background-image: linear-gradient(135deg, rgb(7, 136, 187), black);
+	transition: opacity 0.5s ease-out;
+	z-index: 2;
+	opacity: 0;
+}
+
+.bluegradientBtn:hover:after {
+	opacity: 1;
+}
+
+.bluegradientBtn span {
+	position: relative;
+	z-index: 3;
+}
+
 
 .soon {
 	padding: 2px 10px;

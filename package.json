@@ -26,7 +26,7 @@
 		"detect-gpu": "^4.0.20",
 		"interactjs": "^1.10.2",
 		"lightweight-charts": "^3.7.0",
-		"phaser": "3.60.0-beta.4", 
+		"phaser": "3.60.0-beta.4",
 		"phaser3-rex-plugins": "^1.1.63",
 		"rainbow-colors-array": "^0.0.31",
 		"sanitize-html": "^2.4.0",

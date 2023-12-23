@@ -1,34 +1,26 @@
 <template>
 	<div ref="landing" id="landing">
 		<div v-if="sidebarActive" id="landing-sidebar">
-			<img
-				class="dash-logo"
-				:src="'/static/img/icons/logo' + (darkMode ? '_darkmode' : '') + '.svg?v=' + $root.appVersion"
-			/>
+			<img class="dash-logo"
+				:src="'/static/img/icons/logo' + (darkMode ? '_darkmode' : '') + '.svg?v=' + $root.appVersion" />
 			<div class="buttons dash-buttons">
 				<div class="button-container" v-for="(dashConfig, dashKey) in cPages" :key="dashKey">
-					<a
-						:href="'/d/' + dashKey"
-						class="button theme-button dash-button"
-						:class="{ 'is-active': dashKey === activeKey }"
-						@click.prevent="changeDashboard(dashKey)"
-						v-text="dashConfig.title"
-						:style="dashConfig.depreciated ? 'opacity:0.3' : ''"
-					></a>
+					<a :href="'/d/' + dashKey" class="button theme-button dash-button"
+						:class="{ 'is-active': dashKey === activeKey }" @click.prevent="changeDashboard(dashKey)"
+						v-text="dashConfig.title" :style="dashConfig.depreciated ? 'opacity:0.3' : ''"></a>
 				</div>
 			</div>
 			<div>
 				<h2>Socials</h2>
 				<div class="buttons social-buttons">
-					<a href="https://twitter.com/txStreetsCom" target="_blank" class="button is-twitter"
-						><span class="fab fa-twitter"></span
-					></a>				
-				</div>				
+					<a href="https://twitter.com/txStreetsCom" target="_blank" class="button is-twitter"><span
+							class="fab fa-twitter"></span></a>
+				</div>
 			</div>
 		</div>
 		<section id="landing-grid" class="section grid-section">
 			<div class="landing-top">
-				<div class="buttons top-left-buttons">
+				<div class="buttons top-left-buttons burger">
 					<button @click="sidebarActive = !sidebarActive" class="button theme-button">
 						<span class="fas fa-bars"></span>
 					</button>
@@ -75,7 +67,7 @@ export default {
 			activeConfig: { title: "" },
 			activeKey: "home",
 			darkMode: true,
-			sidebarActive: true,
+			sidebarActive: false,
 			lastForceReload: Date.now(),
 			pages: {
 				home: {
@@ -141,9 +133,9 @@ export default {
 				if (this.$root.selectedCoins[0])
 					this.$root.changeImg(
 						"/static/img/banners/" +
-							this.$root.selectedCoins[0].toLowerCase() +
-							".jpg?v=" +
-							process.env.VUE_APP_VERSION
+						this.$root.selectedCoins[0].toLowerCase() +
+						".jpg?v=" +
+						process.env.VUE_APP_VERSION
 					);
 				let text = this.$root.getVizTitleFromURL(false, false, true);
 				if (!text) return;
@@ -266,19 +258,23 @@ export default {
 #landing {
 	position: fixed;
 	z-index: 500;
+
 	.landing-title {
-		> span {
+		>span {
 			margin-left: 10px;
 		}
 	}
+
 	.social-buttons {
 		justify-content: center;
 		padding: 5%;
 	}
+
 	.vue-grid-layout {
 		width: 100%;
 		margin-bottom: 50px;
 	}
+
 	.mobile-grid {
 		.vue-grid-item {
 			position: relative !important;
@@ -287,12 +283,15 @@ export default {
 			margin-bottom: 1.5rem !important;
 			left: initial !important;
 			top: initial !important;
+
 			&:not(.no-stretch-height) {
 				height: auto !important;
 			}
 		}
+
 		height: auto !important;
 	}
+
 	.image-box {
 		img {
 			position: absolute;
@@ -310,11 +309,13 @@ export default {
 		box-shadow: inset 0 0 0px 10px #ffdd57;
 		border-radius: 6px;
 	}
+
 	display: flex;
 	background-color: rgb(245, 245, 245);
 	width: 100%;
 	height: 100vh;
 	overflow: visible;
+
 	.modal-content {
 		overflow: auto;
 		max-height: 100%;
@@ -322,29 +323,36 @@ export default {
 		display: flex;
 		align-items: flex-start;
 		justify-content: flex-start;
+
 		.box {
 			width: 100%;
 		}
 	}
+
 	.dash-logo {
 		padding: 10px 35px;
 		border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 	}
+
 	#partners {
 		padding: 5%;
 		max-width: 250px;
 		overflow: visible;
+
 		.column {
 			padding: 2% !important;
 		}
 	}
+
 	.tx-list-container {
 		margin-top: 1rem;
 		height: calc(100% - 1rem) !important;
+
 		.tx-list {
 			height: 100% !important;
 		}
 	}
+
 	#landing-grid {
 		.landing-top {
 			width: 100%;
@@ -353,26 +361,32 @@ export default {
 			margin-bottom: 1rem;
 			position: relative;
 			z-index: 2;
+
 			.buttons,
 			.button {
 				margin-bottom: 0;
 			}
-			> div {
+
+			>div {
 				display: flex;
 				align-items: center;
 			}
+
 			.landing-title {
 				order: 2;
 				margin-left: 1.5rem;
 			}
+
 			.top-right-buttons {
 				order: 3;
 				margin-left: auto;
 			}
+
 			.top-left-buttons {
 				order: 1;
 			}
 		}
+
 		float: left;
 		flex-grow: 1;
 		position: relative;
@@ -381,6 +395,7 @@ export default {
 		min-width: 320px !important;
 		padding-bottom: 100px;
 	}
+
 	#landing-sidebar {
 		box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0px 0 1px rgb(10 10 10 / 2%);
 		background: white;
@@ -393,16 +408,16 @@ export default {
 		text-align: center;
 		overflow: auto;
 		overflow-x: hidden;
-		display: flex;
 		flex-direction: column;
 
-		> div:last-of-type {
+		>div:last-of-type {
 			margin-top: auto;
 		}
 
 		&::-webkit-scrollbar {
 			display: none;
 		}
+
 		-ms-overflow-style: none;
 		scrollbar-width: none;
 
@@ -410,33 +425,41 @@ export default {
 			font-size: 1rem;
 			opacity: 0.3;
 		}
+
 		.dash-button {
 			font-size: 1.2rem;
 		}
+
 		.dash-buttons {
 			padding: 0.5rem;
+
 			.button-container:hover {
 				.dash-actions {
 					display: block;
 				}
 			}
-			> .button-container {
+
+			>.button-container {
 				position: relative;
 				width: 100%;
-				> .button {
+
+				>.button {
 					margin-right: 0;
 					width: 100%;
 					justify-content: left;
 				}
-				> .button.is-active {
+
+				>.button.is-active {
 					color: #0bc2a6 !important;
 				}
+
 				.dash-actions {
 					position: absolute;
 					display: none;
 					left: 0;
 					top: calc(100% - 0.5rem);
 					z-index: 4;
+
 					.button {
 						margin: 0;
 					}
@@ -444,22 +467,47 @@ export default {
 			}
 		}
 	}
+
 	font-size: 1.5rem;
+
 	.grid-section {
 		padding: 0.75rem;
 	}
+
 	.columns {
 		overflow: auto;
 	}
 }
+
+.burger {
+	display: none !important;
+}
+
+#landing-sidebar {
+	display: none;
+}
+
 .loading-vis {
 	opacity: 0.4;
 	z-index: 0;
 }
+
 .grid-item:not(.loading-vis) {
 	z-index: 1;
 }
+
 .moonhead-ad {
 	margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 745px) {
+	#landing-sidebar {
+		display: flex !important;
+	}
+
+	.burger {
+		display: flex !important;
+	}
+
 }
 </style>

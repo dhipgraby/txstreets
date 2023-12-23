@@ -1,5 +1,6 @@
 <template>
-	<div @click="connect()" v-if="!state.connected || !state.address" class="button is-primary">Connect Wallet</div>
+	<div @click="connect()" v-if="!state.connected || !state.address" class="connectBtn bluegradientBtn"><span><span class="fas fa-wallet mr-1"></span
+		>Connect Wallet</span></div>
 	<div @click="disconnect" class="button is-danger" v-else>
 		{{ shortHash(state.address) }}
 	</div>
