@@ -1,6 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap");
 
+@font-face {
+	font-family: 'AveriaSerif-Regular';
+	src: url('../../../public/static/webfonts/AveriaSerif-Regular.ttf') format('truetype');
+}
+
 html {
 	font-size: 16px;
 }
@@ -300,6 +305,26 @@ html {
 	margin: 0;
 	overflow: hidden;
 	background-color: rgb(245, 245, 245);
+}
+
+.headerTitle {
+	margin-bottom: 30px;
+}
+.mainTitle {
+	position: relative !important;
+	z-index: 2;
+	font-family: 'AveriaSerif-Regular', sans-serif;
+}
+
+h1.mainTitle {
+	font-size: 4rem;
+	color: #af9aff;
+	text-shadow: 3px 6px #000000 !important;
+}
+
+p.mainTitle {
+	font-size: 1.5rem;
+	color: white
 }
 
 #vue-app {
@@ -941,6 +966,7 @@ table {
 	margin-top: -6px;
 	color: #1f1f1f;
 	font-weight: bold;
+	padding-top: 20px;
 }
 
 .vue-grid-item {
@@ -1005,30 +1031,6 @@ table {
 	position: relative;
 	z-index: 1;
 
-	.buttons {
-		position: absolute;
-		bottom: 0.75rem;
-		left: 0;
-		width: 100%;
-
-		.button {
-			margin-right: 0 !important;
-		}
-
-		.dropdown {
-			position: absolute;
-			bottom: 0;
-
-			&:nth-of-type(2n + 1) {
-				left: 0.75rem;
-			}
-
-			&:nth-of-type(2n) {
-				right: 0.75rem;
-			}
-		}
-	}
-
 	.launch-container {
 		@extend .unselectable;
 		position: absolute;
@@ -1038,12 +1040,6 @@ table {
 		left: 0;
 		right: 0;
 		z-index: 1;
-
-		.button.is-large {
-			display: inline-block;
-			font-weight: bold;
-			font-size: 2.5rem;
-		}
 	}
 }
 

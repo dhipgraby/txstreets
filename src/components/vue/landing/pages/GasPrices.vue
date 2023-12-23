@@ -9,7 +9,9 @@
         <!-- <div class="vue-grid-item base-fee-chart">
             <StatChart  v-bind="{ statConfig: [{ticker: 'ETH', key: 'baseFee', duration: '2d', interval: '5m' }], options: {title: 'Base Fee'} }"/>
         </div> -->
-        <div style="font-size: 1rem;" class="mt-10 is-info">TxStreet simulates the next 3 blocks in real time, using
+
+        <div style="font-size: 1rem;margin-top: 30px;">TxStreet simulates the next 3 blocks in real time, using
+
             pending transactions. These simulations allow for the most accurate gas price predictions. Depending on the
             fluctuating base fee, the second and third block may have higher fees than the first. It's recommended to use
             the large green values, however if there is a gas war and you need an instant confirmation, you might consider
@@ -37,8 +39,23 @@ export default {
 
 <style lang="scss" scoped>
 img {
-    width: 350px;
-    margin: auto;
+    max-width: 350px;
+    animation: neon 1.5s infinite; /* removed "duration" */
+    transition: 0.5s;
+}
+
+@keyframes neon {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+
+    50% {
+        filter: hue-rotate(45deg);
+    }
+
+    100% {
+        filter: hue-rotate(0deg);
+    }
 }
 
 .base-fee-chart {

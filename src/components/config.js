@@ -1440,12 +1440,12 @@ export const commonTitleOverrides = {
 };
 
 export const enabledConfig = {
-	ETH,
+	ARBI,
 	BTC,
+	ETH,	
 	BCH,
-	XMR,
-	LTC,
-	ARBI
+	// XMR,
+	// LTC	
 };
 
 export const additionalSheets = {

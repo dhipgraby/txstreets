@@ -143,7 +143,11 @@ Bus.prototype.newBus = function (atStop = true) {
 		}
 	}
 
-	this.setData("id", this.scene.blockchain[this.scene.blockchain.length - 1].height + busIndex);
+	if (this.scene.blockchain[this.scene.blockchain.length - 1]) {
+		this.setData("id", this.scene.blockchain[this.scene.blockchain.length - 1].height + busIndex);
+	} else {
+		console.log('error with bus height');
+	}
 
 	this.busHeight = this.scene.calcBusHeight(this.scene.config.busCapacityVisual || this.scene.config.busCapacity);
 	if (this.busHeight < 1) this.busHeight = 1;
@@ -326,7 +330,7 @@ Bus.prototype.setFeeText = function () {
 		: this.lowFee
 			? Math.ceil(this.lowFee) + " " + this.scene.vue.busFeeTitle
 			: "";
-	
+
 	if (text2 !== this.text2.text) this.text2.setText(text2);
 
 	let text3 = this.feeText2 || "";

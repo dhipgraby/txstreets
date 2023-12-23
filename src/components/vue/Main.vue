@@ -40,7 +40,7 @@ export default {
 			darkMode: true,
 			autoLoad: false,
 			autoLoading: false,
-			selectedCoins: ["ETH", "BTC"],
+			selectedCoins: ["ARBI", "BTC"],
 			now: 0,
 			nowMinute: 0,
 			moonHeadAds: [],
