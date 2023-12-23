@@ -181,6 +181,7 @@ export default {
 		},
 		createParticles(particles) {
 			const particleContainer = document.getElementById('particleContainer');
+			if(!particleContainer) return
 			let particleCount = 0;
 
 			function addParticle() {

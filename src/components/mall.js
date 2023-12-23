@@ -858,7 +858,7 @@ export class Street extends Phaser.Scene {
 
 	checkBlockInterval() {
 		this.time.addEvent({
-			delay: 10,
+			delay: 800,
 			callback: function () {
 				if (!window.txStreetPhaser.streetController.hidden) this.checkNewBlocks();
 			},
@@ -879,7 +879,6 @@ export class Street extends Phaser.Scene {
 			return false;
 		}
 		if (window.txStreetPhaser.streetController.hidden) return false;
-
 		for (let i = 0; i < this.blockchain.length; i++) {
 			let block = this.blockchain[i];
 			if (block.processed) continue;
