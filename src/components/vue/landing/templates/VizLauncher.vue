@@ -227,8 +227,7 @@ export default {
 			const intervalId = setInterval(() => {
 				const randomDelay = randomIntFromInterval(500, 1000);
 
-				setTimeout(() => {
-					console.log("creating particle");
+				setTimeout(() => {					
 					addParticle();
 				}, randomDelay)
 
