@@ -564,12 +564,13 @@ export class Street extends Phaser.Scene {
 	createPeople() {
 		this.people = this.add.group({
 			classType: Person,
-			maxSize: this.lineLength + 1000,
+			maxSize: this.lineLength + 10, //IT WAS 1000
 			runChildUpdate: false,
 			active: false,
 			visible: false,
 		});
-		this.people.createMultiple({ key: "sheet", quantity: 2000, active: false, visible: false });
+		//IT WAS quantity: WAS 1000
+		this.people.createMultiple({ key: "sheet", quantity: 10, active: false, visible: false });
 		this.people.setDepth(this.personDepth);
 
 		//add more people at once to the group if there aren't many available, so the `get` call doesn't use up resources
@@ -858,7 +859,7 @@ export class Street extends Phaser.Scene {
 
 	checkBlockInterval() {
 		this.time.addEvent({
-			delay: 800,
+			delay: 200,
 			callback: function () {
 				if (!window.txStreetPhaser.streetController.hidden) this.checkNewBlocks();
 			},

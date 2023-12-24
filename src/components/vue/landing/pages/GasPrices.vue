@@ -1,7 +1,8 @@
 <template>
-    <div class="container">
-
+    <div class="page-container pt-2">
+        <h1 class="mainTitle"><i class="fas fa-gas-pump t-purple"></i> Gas Station</h1>
         <div class="ta-c">
+
             <img v-bind:src="stationImg" alt="gasStation" />
         </div>
         <GasPrices />
@@ -38,9 +39,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+h1 {
+    font-size: 42px;
+    text-shadow: 0px 2px 2px #000;
+    margin-bottom: 30px;
+    color: white;
+}
+
 img {
     max-width: 350px;
-    animation: neon 1.5s infinite; /* removed "duration" */
+    animation: neon 1.5s infinite;
+    /* removed "duration" */
     transition: 0.5s;
 }
 

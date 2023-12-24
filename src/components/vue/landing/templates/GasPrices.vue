@@ -10,13 +10,7 @@
 								<label for="eip1559">EIP-1559</label>
 							</div>
 							<div class="control">
-								<input
-									v-model="advanced"
-									name="advanced"
-									id="advanced"
-									class="switch"
-									type="checkbox"
-								/>
+								<input v-model="advanced" name="advanced" id="advanced" class="switch" type="checkbox" />
 								<label for="advanced">Advanced</label>
 							</div>
 						</div>
@@ -28,11 +22,8 @@
 								<p v-if="advanced" class="subtitle is-6 has-text-centered">
 									Block #{{ values[0].height }}
 								</p>
-								<div
-									v-if="eip1559"
-									:class="{ 'columns is-mobile': !advanced }"
-									class="content has-text-centered"
-								>
+								<div v-if="eip1559" :class="{ 'columns is-mobile': !advanced }"
+									class="content has-text-centered">
 									<div :class="{ column: !advanced }" :style="advanced ? 'margin-bottom:1.5rem' : ''">
 										<div class="value-title">
 											<strong>Priority Fee</strong>
@@ -73,31 +64,23 @@
 								</div>
 								<div class="content has-text-centered">
 									<div class="values details">
-										<span v-if="advanced"
-											>Base Fee:
+										<span v-if="advanced">Base Fee:
 											<span class="tag is-info is-large base-fee">{{
 												formatNo(values[0].baseFee, true)
-											}}</span></span
-										>
-										<span v-if="advanced"
-											>Tx Count: <span class="tag">{{ values[0].txCount }}</span></span
-										>
-										<span v-if="advanced"
-											>Gas Used:
+											}}</span></span>
+										<span v-if="advanced">Tx Count: <span class="tag">{{ values[0].txCount
+										}}</span></span>
+										<span v-if="advanced">Gas Used:
 											<span class="tag">{{
 												values[0].gasUsed.toLocaleString("en-US", {
 													maximumFractionDigits: 0,
 												})
-											}}</span></span
-										>
+											}}</span></span>
 									</div>
 								</div>
 							</div>
-							<div
-								v-else
-								class="loader is-loading"
-								style="width: 50px; height: 50px; margin: 10px auto"
-							></div>
+							<div v-else class="loader is-loading" style="width: 50px; height: 50px; margin: 10px auto">
+							</div>
 							<div class="later-blocks" v-if="values[1] && values[2]">
 								<div v-for="i in 2" :key="i" class="later-block block">
 									<div class="title is-6 has-text-centered">
@@ -199,6 +182,7 @@ $light-color: #cccccc;
 			.title {
 				color: $light-1 !important;
 			}
+
 			color: $light-1 !important;
 			background-color: $dark-1 !important;
 		}
@@ -215,12 +199,14 @@ $light-color: #cccccc;
 	max-width: 900px;
 	position: relative;
 	display: inline-block;
+
 	.toggle {
 		.control {
 			display: inline-block;
 			margin: 10px;
 		}
 	}
+
 	.gas-estimate-container-flex {
 		display: flex;
 		height: 100%;
@@ -228,45 +214,54 @@ $light-color: #cccccc;
 		flex-direction: column;
 
 	}
+
 	.gas-estimate-container {
-		border: solid 1px #5d69d8;
-		position: relative;
+		border-radius: 20px;		position: relative;
 		width: 100%;
 		display: flex;
 		flex: 1;
 		justify-content: center;
+
 		.gas-estimate {
 			width: 100%;
 			padding: 5px 0px;
 
 			.value-title {
 				font-size: 1rem;
+
 				strong {
 					font-size: 1.2rem;
 				}
 			}
+
 			.subtitle {
 				color: $dark-color;
 			}
+
 			.columns {
 				&.content {
 					margin-bottom: 1.5rem !important;
 				}
 			}
+
 			.block {
 				border-radius: 4px;
 				padding: 10px 3px;
 				margin: 0 4px !important;
 				background-color: white;
+
 				.values {
 					position: relative;
-					> span {
+
+					>span {
 						white-space: nowrap !important;
 					}
+
 					.recommended {
 						color: rgb(0, 194, 0);
 						font-size: 3.5rem;
 					}
+
 					.minimum {
 						color: rgb(175, 194, 0);
 						font-size: 1rem;
@@ -276,6 +271,7 @@ $light-color: #cccccc;
 						left: 15%;
 						width: 200px;
 						text-align: left;
+
 						&::after {
 							content: "Minimum";
 							position: absolute;
@@ -286,6 +282,7 @@ $light-color: #cccccc;
 							opacity: 0.8;
 						}
 					}
+
 					.high {
 						color: rgb(175, 194, 0);
 						font-size: 1rem;
@@ -295,6 +292,7 @@ $light-color: #cccccc;
 						right: 15%;
 						width: 200px;
 						text-align: right;
+
 						&::after {
 							content: "Overpay";
 							position: absolute;
@@ -305,16 +303,20 @@ $light-color: #cccccc;
 							opacity: 0.8;
 						}
 					}
+
 					&.details {
 						font-size: 1rem;
 					}
+
 					.tag {
 						&:not(.base-fee) {
 							font-size: 1rem;
 						}
+
 						margin: 1%;
 					}
 				}
+
 				.values.with-line::after {
 					content: "";
 					height: 1px;
@@ -326,21 +328,26 @@ $light-color: #cccccc;
 					background: linear-gradient(to right, rgb(175, 194, 0), rgb(0, 194, 0), rgb(175, 194, 0));
 				}
 			}
+
 			.next-block {
 				width: calc(100% - 8px);
 			}
 		}
+
 		.later-blocks {
 			opacity: 0.5;
 			margin-top: 8px !important;
 			overflow: auto;
 		}
+
 		.later-block {
 			width: calc(50% - 8px);
 			float: left;
+
 			.content .columns {
 				margin-bottom: 24px !important;
 			}
+
 			.values {
 				.tag {
 					font-size: 0.9rem !important;
@@ -348,5 +355,4 @@ $light-color: #cccccc;
 			}
 		}
 	}
-}
-</style>
+}</style>

@@ -4,7 +4,7 @@
 			<img v-if="isImage" :src="adText" />
 			<span v-else>{{ adText }}</span>
 		</a>
-		<div class="ad-source tag">
+		<div class="ad-source tag mt-2">
 			<span>Your ad here with <a target="_blank" href="https://n8u0k9wgiua.typeform.com/to/vkMqgKcC">Contact us</a></span>
 		</div>
 	</div>
@@ -70,9 +70,7 @@ export default {
 	}
     }
 	.ad-source {
-		font-size: 0.75rem;
-		position: absolute;
-        bottom: 100%;
+		font-size: 1rem;		        
 	}
 }
 </style>

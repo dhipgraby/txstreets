@@ -65,8 +65,22 @@ a.navbar-item.is-active,
 	background-color: $navbar-item-active-background-color;
 }
 
+.page-container {
+	padding-top: 40px;
+	max-width: 1450px;
+	margin: auto;
+}
+
 .t-yellow {
 	color: #f2a445;
+}
+
+.t-purple {
+	color: #9886df;
+}
+
+.t-white {
+	color: white;
 }
 
 .ta-c {

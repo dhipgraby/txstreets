@@ -181,7 +181,7 @@ export default {
 		},
 		createParticles(particles) {
 			const particleContainer = document.getElementById('particleContainer');
-			if(!particleContainer) return
+			if (!particleContainer) return
 			let particleCount = 0;
 
 			function addParticle() {
@@ -228,7 +228,7 @@ export default {
 			const intervalId = setInterval(() => {
 				const randomDelay = randomIntFromInterval(500, 1000);
 
-				setTimeout(() => {					
+				setTimeout(() => {
 					addParticle();
 				}, randomDelay)
 
@@ -313,6 +313,7 @@ export default {
 		top: 0;
 		left: 0;
 		background: rgba($color: #1f1f1f, $alpha: 0.8);
+		background-image: linear-gradient(to top, transparent 40%,black);
 		z-index: 0;
 	}
 

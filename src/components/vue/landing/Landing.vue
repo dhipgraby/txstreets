@@ -20,12 +20,20 @@
 		</div>
 		<section id="landing-grid" class="section grid-section">
 			<div class="landing-top">
-				<div class="buttons top-left-buttons burger">
-					<button @click="sidebarActive = !sidebarActive" class="button theme-button">
-						<span class="fas fa-bars"></span>
-					</button>
+				<div class="buttons top-left-buttons">
+					<div class="burger">
+						<button @click="sidebarActive = !sidebarActive" class="button theme-button">
+							<span class="fas fa-bars"></span>
+						</button>
+					</div>
+					<div class="navLi" v-for="(dashConfig, dashKey) in cPages" :key="dashKey">
+						<a :href="'/d/' + dashKey" class="menuItem" :class="{ 'is-active': dashKey === activeKey }"
+							@click.prevent="changeDashboard(dashKey)" v-text="dashConfig.title"
+							:style="dashConfig.depreciated ? 'opacity:0.3' : ''"></a>
+					</div>
 				</div>
 				<div class="buttons top-right-buttons">
+
 					<connect />
 					<button v-if="!darkMode" @click="darkMode = !darkMode" class="button is-dark">
 						<span class="fas fa-moon"></span>
@@ -34,12 +42,9 @@
 						<span class="fas fa-sun"></span>
 					</button>
 				</div>
-				<div v-if="!activeConfig.hideTitle" class="landing-title">
-					{{ activeConfig.pageTitle || activeConfig.title }}
-				</div>
 			</div>
-			<MoonHeadAd v-if="activeConfig.hasAd" />
 			<component :is="activeConfig.page" v-if="activeConfig.page"></component>
+			<MoonHeadAd v-if="activeConfig.hasAd" />
 		</section>
 	</div>
 </template>
@@ -73,7 +78,6 @@ export default {
 				home: {
 					title: "🚌 Visualizer",
 					page: "Home",
-					hideTitle: true,
 				},
 				gas: {
 					title: "⛽ ETH Gas Prices",
@@ -255,6 +259,20 @@ export default {
 };
 </script>
 <style lang="scss">
+.menuItem {
+	font-size: 18px;
+	color: white !important;
+	margin-right: 12px;
+}
+
+.navLi {
+	margin-left: 30px;
+}
+
+.menuItem:hover {
+	color: rgb(91, 121, 255) !important;
+}
+
 #landing {
 	position: fixed;
 	z-index: 500;
@@ -380,6 +398,7 @@ export default {
 			.top-right-buttons {
 				order: 3;
 				margin-left: auto;
+				gap: 20px;
 			}
 
 			.top-left-buttons {
@@ -507,6 +526,10 @@ export default {
 
 	.burger {
 		display: flex !important;
+	}
+
+	.navLi {
+		display: none;
 	}
 
 }
