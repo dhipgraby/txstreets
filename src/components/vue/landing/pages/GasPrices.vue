@@ -1,5 +1,5 @@
 <template>
-    <div class="page-container pt-2">
+    <div class="page-container ">
         <h1 class="mainTitle"><i class="fas fa-gas-pump t-purple"></i> Gas Station</h1>
         <div class="ta-c">
 

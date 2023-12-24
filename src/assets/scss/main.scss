@@ -6,7 +6,7 @@
 
 $tablet: 861px;
 
-$primary: #0bc2a6;
+$primary: #56478c;
 $dark: #1f1f1f;
 $scheme-main-bis: hsl(0, 0%, 98%);
 
@@ -71,12 +71,24 @@ a.navbar-item.is-active,
 	margin: auto;
 }
 
+.hero-body {
+	width: 100%;
+	max-width: 1450px;
+	margin: auto;
+}
+
+.hero.is-primary {
+	background-color: #56478c;
+	background-image: linear-gradient(to bottom, black -10%, transparent);
+	color: #a8a8a8 !important;
+}
+
 .t-yellow {
 	color: #f2a445;
 }
 
 .t-purple {
-	color: #9886df;
+	color: #9886df !important;
 }
 
 .t-white {

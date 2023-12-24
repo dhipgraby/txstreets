@@ -11,8 +11,8 @@
 					<img src="/static/img/singles/characters/alien-0.png" />
 				</picture>
 				<div class="hero-body">
-					<p class="title">See the Blockchain. Live.</p>
-					<p class="subtitle">Technically the mempool.</p>
+					<p class="title mb-3">See the Blockchain. Live.</p>
+					<p class="subtitle mt-2">Technically the mempool.</p>
 					<p>
 						TxStreet is a live transaction and mempool visualizer featuring Bitcoin, Ethereum, Bitcoin Cash,
 						Monero and Litecoin. When a new transaction is broadcasted to a cryptocurrency network, a person
@@ -43,14 +43,10 @@
 							</p>
 						</div>
 						<div class="column is-one-third">
-							<Transactions
-								style="height: 320px; width: 100%"
-								v-bind="{
-									ticker: this.$root.selectedCoins[0],
-									// txsEnabled: {},
-								}"
-								:key="this.$root.selectedCoins[0]"
-							/>
+							<Transactions style="height: 320px; width: 100%" v-bind="{
+								ticker: this.$root.selectedCoins[0],
+								// txsEnabled: {},
+							}" :key="this.$root.selectedCoins[0]" />
 						</div>
 					</div>
 				</div>
@@ -62,19 +58,13 @@
 					<div class="columns">
 						<div v-if="$root.selectedCoins[0]" class="column is-half">
 							<div class="title">{{ enabledConfig[$root.selectedCoins[0]].coinName }}</div>
-							<Blocks
-								:key="$root.selectedCoins[0]"
-								style="max-height: 500px; height: 500px; overflow: auto"
-								v-bind="{ ticker: $root.selectedCoins[0] }"
-							/>
+							<Blocks :key="$root.selectedCoins[0]" style="max-height: 500px; height: 500px; overflow: auto"
+								v-bind="{ ticker: $root.selectedCoins[0] }" />
 						</div>
 						<div v-if="$root.selectedCoins[1]" class="column is-half">
 							<div class="title">{{ enabledConfig[$root.selectedCoins[1]].coinName }}</div>
-							<Blocks
-								:key="$root.selectedCoins[1]"
-								style="max-height: 500px; height: 500px; overflow: auto"
-								v-bind="{ ticker: $root.selectedCoins[1] }"
-							/>
+							<Blocks :key="$root.selectedCoins[1]" style="max-height: 500px; height: 500px; overflow: auto"
+								v-bind="{ ticker: $root.selectedCoins[1] }" />
 						</div>
 					</div>
 				</div>
@@ -90,10 +80,8 @@
 							</div>
 							<template v-for="(stat, statKey) in enabledConfig[$root.selectedCoins[0]].stats">
 								<div v-if="stat.value" class="box" :key="statKey">
-									<div
-										:style="'color: #' + enabledConfig[$root.selectedCoins[0]].color"
-										class="title is-5"
-									>
+									<div :style="'color: #' + enabledConfig[$root.selectedCoins[0]].color"
+										class="title is-5">
 										{{ $root.i18n(stat.title) }}
 									</div>
 									<div class="subtitle is-4">{{ calcStatValue(stat) }}</div>
@@ -106,10 +94,8 @@
 							</div>
 							<template v-for="(stat, statKey) in enabledConfig[$root.selectedCoins[1]].stats">
 								<div v-if="stat.value" class="box" :key="statKey">
-									<div
-										:style="'color: #' + enabledConfig[$root.selectedCoins[1]].color"
-										class="title is-5"
-									>
+									<div :style="'color: #' + enabledConfig[$root.selectedCoins[1]].color"
+										class="title is-5">
 										{{ $root.i18n(stat.title) }}
 									</div>
 									<div class="subtitle is-4">{{ calcStatValue(stat) }}</div>
@@ -119,13 +105,14 @@
 					</div>
 				</div>
 			</section>
-            <section class="hero is-link socials">
+			<section class="hero socials">
 				<div class="hero-body">
 					<div class="columns has-text-centered">
-						<div  class="column is-half">
+						<div class="column is-half">
 							<a href="https://twitter.com/txStreetsCom" target="_blank">
-                            <div class="subtitle">Twitter</div><img src="/static/img/banners/twitter.png" /></a>
-						</div>						
+								<div class="subtitle">Twitter</div><img src="/static/img/banners/twitter.png" />
+							</a>
+						</div>
 					</div>
 				</div>
 			</section>
@@ -171,41 +158,45 @@ export default {
 		-webkit-transform: translateX(0px);
 		transform: translateX(0px);
 	}
+
 	80% {
 		-webkit-transform: translateX(-120vw);
 		transform: translateX(-120vw);
 	}
-    100% {
+
+	100% {
 		-webkit-transform: translateX(-120vw);
 		transform: translateX(-120vw);
 	}
 }
+
 .alien-moving {
 	position: absolute;
 	bottom: -6px;
 	right: -70px;
 	animation: movingPerson linear infinite 12s 2s;
-    will-change: transform;
+	will-change: transform;
 }
+
 .launcher {
 	width: 100%;
-	position: absolute;
-	left: 0;
-	top: 0;
 }
+
 .below-content {
 	width: 100%;
-	position: absolute;
-	left: 0;
+	background-color: black;
 
 	.moonhead-ad {
-		margin: 50px 0;
+		padding: 50px 0;
 	}
 }
-.socials{
-    img{
-        max-height: 150px;
-        width: auto;
-    }
+
+.socials {
+	background-color: #4f4182;
+
+	img {
+		max-height: 150px;
+		width: auto;
+	}
 }
 </style>

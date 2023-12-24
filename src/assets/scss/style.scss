@@ -29,8 +29,12 @@ $light-2: #e0e0e0;
 	.textarea,
 	.input {
 		background-color: $dark-1;
-		border-color: #077f6d !important;
+		border-color: #514384 !important;
 		color: $light-2;
+	}
+
+	.coin-dropdown-button {
+		border-radius: 50px;
 	}
 
 	.table td,
@@ -310,6 +314,7 @@ html {
 .headerTitle {
 	margin-bottom: 30px;
 }
+
 .mainTitle {
 	position: relative !important;
 	z-index: 2;

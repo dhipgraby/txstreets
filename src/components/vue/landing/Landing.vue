@@ -373,11 +373,13 @@ export default {
 
 	#landing-grid {
 		.landing-top {
+			background-color: black;
+			padding: 10px 20px;
 			width: 100%;
 			display: flex;
 			flex-flow: row wrap;
-			margin-bottom: 1rem;
-			position: relative;
+			position: sticky;
+			top: 0;
 			z-index: 2;
 
 			.buttons,
@@ -490,7 +492,7 @@ export default {
 	font-size: 1.5rem;
 
 	.grid-section {
-		padding: 0.75rem;
+		padding: 0;
 	}
 
 	.columns {
@@ -519,7 +521,7 @@ export default {
 	margin-bottom: 20px;
 }
 
-@media only screen and (max-width: 745px) {
+@media only screen and (max-width: 861px) {
 	#landing-sidebar {
 		display: flex !important;
 	}
