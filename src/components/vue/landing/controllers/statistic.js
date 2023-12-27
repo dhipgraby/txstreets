@@ -124,6 +124,7 @@ export class Stat {
     }
 
     connectSocket() {
+
         let coinConfig = enabledConfig[this.ticker];
         let socket = getSocket(coinConfig).socket;
 
@@ -133,6 +134,7 @@ export class Stat {
                 socket: socket,
                 eventName: "stat-updates",
                 listener: (ticker, key, value) => {
+                    
                     if (key !== this.key) return;
                     let time = Math.round(Date.now() / 1000);
                     let statHistory = history[ticker][key];
@@ -142,7 +144,7 @@ export class Stat {
                             statHistory[statHistory.length - 1].value !== value)
                     ) {
                         statHistory.push({ time, value });
-
+                        
                         //update last updated value if it was already updated in last 15 seconds, then we know we have a running chain of accurate values
                         let now = Math.round(Date.now() / 1000);
                         if (now - Number(historyLastUpdated[ticker + "-stat-history-" + key]) < 15)
@@ -158,6 +160,8 @@ export class Stat {
         else {
             this.listener = listeners[this.statKey];
         }
+
+        // if (this.ticker === "CBASE") return
 
         if (!listeners[this.historyKey]) {
             this.historyListener = listeners[this.historyKey] = {
@@ -207,8 +211,8 @@ export class Stat {
     }
 }
 
-export const newStat = (ticker, key) => {
-    const stat = new Stat(ticker, key);
+export const newStat = (ticker, key) => {    
+    const stat = new Stat(ticker, key);    
     instances.push(stat);
     return stat;
 }

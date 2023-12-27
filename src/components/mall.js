@@ -273,10 +273,23 @@ export class Street extends Phaser.Scene {
 			this.socketStats(this.config);
 			this.socket.emit("get-recent-house-txs", this.ticker);
 			this.blockFactory.connect();
+
+			if (this.ticker !== "ARBI" && this.ticker !== "CBASE") {
+				console.log('Socket connection error tiker not supported:', this.ticker);
+				return
+			}
+
 			this.blockFactory.socket.on("arbiRollup", () => {
 				if (window.txStreetPhaser.streetController.hidden || this.game.scene.isSleeping(this)) return;
 				this.rollupStart();
 			})
+
+			this.blockFactory.socket.on("cbaseRollup", () => {
+				console.log('cbaseRollup EVENT!');
+				if (window.txStreetPhaser.streetController.hidden || this.game.scene.isSleeping(this)) return;
+				this.rollupStart();
+			})
+
 		}, 50);
 
 		this.blockFactory.once("connected", async () => {
@@ -288,6 +301,7 @@ export class Street extends Phaser.Scene {
 		});
 
 		this.blockFactory.on("addBlock", (data, sendNotification) => {
+			console.log('block added');
 			this.vue.emitBlock(data);
 			if (
 				!document.hasFocus() &&

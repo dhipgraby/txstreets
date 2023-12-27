@@ -6,6 +6,7 @@ import BTCStreet from "./streets/bitcoin.js";
 import BCHStreet from "./streets/bitcoin-cash.js";
 import ETHStreet from "./streets/ethereum.js";
 import ARBIStreet from "./streets/abitrum";
+import BASEStreet from "./streets/base";
 import XMRStreet from "./streets/monero.js";
 import LTCStreet from "./streets/litecoin.js";
 import rca from "rainbow-colors-array";
@@ -19,7 +20,8 @@ export const availableStreets = {
 	ETH: ETHStreet,
 	XMR: XMRStreet,
 	LTC: LTCStreet,
-	ARBI: ARBIStreet
+	ARBI: ARBIStreet,
+	CBASE: BASEStreet
 };
 
 export const enabledStreets = {};
@@ -331,6 +333,7 @@ export class StreetController extends Phaser.Scene {
 	getCoinStreet(coin) {
 		for (let i = 0; i < this.game.scene.scenes.length; i++) {
 			let scene = this.game.scene.scenes[i];
+			console.log('scene', scene)
 			if (scene instanceof coin) {
 				return scene;
 			}

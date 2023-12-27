@@ -14,11 +14,17 @@ class blockFactory extends EventEmitter {
 	connect() {
 		this.socket = joinRoom(this.config, "blocks");
 		if (this.connected) {
+			console.log('connected to ', `${this.config.ticker}-blocks`);
 			this.emit("connected");
 			return;
 		}
 		this.connected = true;
 		this.socket.once("latestblocks", async hashes => {
+			console.log('latestblocks EVENTS');
+			if (!hashes) {
+				console.log('Hashes null for ', this.config.ticker);
+				return
+			}
 			if (hashes.length) {
 				let blocks = hashes;
 				if (typeof hashes[0] === "string") {
@@ -42,13 +48,14 @@ class blockFactory extends EventEmitter {
 				for (let i = blocks.length - 1; i >= 0; i--) {
 					let block = blocks[i];
 					this.addBlock(block, false, true, true);
-				}				
+				}
 			}
 
 			this.emit("connected");
 		});
 
 		this.socket.on("block", async (hash) => {
+			console.log('block event ');
 			if (typeof hash === "string") {
 				this.getBlock(hash);
 			}
@@ -137,7 +144,7 @@ class blockFactory extends EventEmitter {
 
 		//add fee info to block from txFull		
 		this.config.calcBlockFeeArray(data);
-
+		if (!this.blockchain.length) return;
 		this.blockchain.push(Object.seal(data));
 		if (typeof data.uncles !== "undefined" && !processed) {
 			this.setUncles(data.uncles);
