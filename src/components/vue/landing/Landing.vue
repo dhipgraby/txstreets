@@ -414,7 +414,7 @@ export default {
 		overflow: auto;
 		overflow-x: hidden;
 		min-width: 320px !important;
-		padding-bottom: 100px;
+		padding-bottom: 50px;
 	}
 
 	#landing-sidebar {

@@ -277,6 +277,12 @@ export class Street extends Phaser.Scene {
 				if (window.txStreetPhaser.streetController.hidden || this.game.scene.isSleeping(this)) return;
 				this.rollupStart();
 			})
+
+			this.blockFactory.socket.on("cbaseRollup", () => {
+				console.log('cbaseRollup EVENT!');
+				if (window.txStreetPhaser.streetController.hidden || this.game.scene.isSleeping(this)) return;
+				this.rollupStart();
+			})
 		}, 50);
 
 		this.blockFactory.once("connected", async () => {

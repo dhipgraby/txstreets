@@ -51,7 +51,7 @@
 										</span>
 										<span
 											v-if="$root.$refs.landing && $root.$refs.landing.enabledConfig[coin] && $root.$refs.landing.enabledConfig[coin].coinName">{{
-												$root.$refs.landing.enabledConfig[coin].coinName }}</span>
+												$root.$refs.landing.enabledConfig[coin].coinName === "CBase" ? "Base" : $root.$refs.landing.enabledConfig[coin].coinName }}</span>
 										<span v-else>?</span>
 										<span class="icon is-normal"><span class="fas fa-chevron-up"></span></span>
 									</button>
@@ -72,7 +72,7 @@
 														" width="28" height="28" />
 												</span>
 												<span>
-													{{ $root.$refs.landing.enabledConfig[dropCoin.ticker].coinName
+													{{ $root.$refs.landing.enabledConfig[dropCoin.ticker].coinName === "CBase" ? "Base" : $root.$refs.landing.enabledConfig[dropCoin.ticker].coinName
 													}}</span></a>
 										</template>
 										<hr class="dropdown-divider" />
@@ -145,7 +145,7 @@ export default {
 			}
 
 			let bannerTicker = ticker;
-			if (bannerTicker === "ARBI") bannerTicker = "ETH";
+			if (bannerTicker === "ARBI" || bannerTicker === "CBASE") bannerTicker = "ETH";
 			let style = bannerTicker
 				? "background-image: url(/static/img/banners/" +
 				bannerTicker.toLowerCase() +
