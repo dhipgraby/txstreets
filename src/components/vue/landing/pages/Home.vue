@@ -116,6 +116,9 @@
 					</div>
 				</div>
 			</section>
+			<div class="ta-c p-2 bg-transparent ">
+				<small>A project inspired by <a href="https://txstreet.com" target="_blacnk">txstreet.com</a></small>
+			</div>
 		</div>
 	</div>
 </template>
