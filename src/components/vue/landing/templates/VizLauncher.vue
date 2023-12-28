@@ -145,7 +145,7 @@ export default {
 			}
 
 			let bannerTicker = ticker;
-			if (bannerTicker === "ARBI") bannerTicker = "ETH";
+			if (bannerTicker === "ARBI" || bannerTicker === "CBASE") bannerTicker = "ETH";
 			let style = bannerTicker
 				? "background-image: url(/static/img/banners/" +
 				bannerTicker.toLowerCase() +

@@ -14,11 +14,13 @@ class blockFactory extends EventEmitter {
 	connect() {
 		this.socket = joinRoom(this.config, "blocks");
 		if (this.connected) {
+			console.log('connected to ', `${this.config.ticker}-blocks`);
 			this.emit("connected");
 			return;
 		}
 		this.connected = true;
 		this.socket.once("latestblocks", async hashes => {
+			console.log('latestblocks event', hashes.length);
 			if (hashes.length) {
 				let blocks = hashes;
 				if (typeof hashes[0] === "string") {
@@ -28,27 +30,32 @@ class blockFactory extends EventEmitter {
 					});
 					let responses;
 					try {
+						console.log('here');
 						responses = await Promise.all(tasks);
 					} catch (err) {
 						console.log(err);
 						this.emit("error", err);
 						return;
 					}
-					blocks = await Promise.all(responses.map(async res => res.json()));
-				}
 
+					blocks = await Promise.all(responses.map(async res => res.json()));
+				} else {
+					console.log('hashes 0');
+				}
+				console.log('here', blocks);
 				blocks.sort((a, b) => b.height - a.height);
 
 				for (let i = blocks.length - 1; i >= 0; i--) {
 					let block = blocks[i];
 					this.addBlock(block, false, true, true);
-				}				
+				}
 			}
 
 			this.emit("connected");
 		});
 
 		this.socket.on("block", async (hash) => {
+			console.log('Block event!')
 			if (typeof hash === "string") {
 				this.getBlock(hash);
 			}
@@ -124,6 +131,8 @@ class blockFactory extends EventEmitter {
 				}
 			}
 		}
+
+		if (!this.blockchain.length) return
 
 		data.processed = processed;
 		data.busCapacity = this.config.busCapacity;
