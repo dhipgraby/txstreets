@@ -3,8 +3,7 @@
 		<nav class="navbar" role="navigation" aria-label="navigation" :style="'justify-content:center'">
 			<div class="coin-dropdown-button button is-medium" @click="dropdownActive = !dropdownActive"
 				:class="{ 'is-primary': dropdownActive }">
-				<span class="coin-logo"
-					:style="'background-color: ' + (darkMode ? 'transparent' : ' #' + coinConfig.color) + ';'">
+				<span class="coin-logo" :style="'background-color: #' + coinConfig.color + ';'">
 					<img :src="config.baseUrl +
 						'static/img/singles/coin_logos/' +
 						coinConfig.ticker.toLowerCase() +
@@ -12,7 +11,7 @@
 						appVersion
 						" width="48" height="48" />
 				</span>
-				<span>{{ coinConfig.coinName }}</span>
+				<span>{{ coinConfig.coinName === "CBase" ? "Base" : coinConfig.coinName }}</span>
 				<span class="icon is-normal"><i class="fas fa-chevron-down"></i></span>
 			</div>
 
@@ -26,8 +25,7 @@
 								class="column has-text-centered">
 								<div class="button is-medium relative" v-on:click="switchStreet(side, street)"
 									:class="{ 'is-primary': street.config.coinName == coinConfig.coinName }">
-									<span class="coin-logo"
-										:style="'background-color: ' + (darkMode ? 'transparent' : ' #' + street.config.color) + ';'">
+									<span class="coin-logo" :style="'background-color: #' + street.config.color + ';'">
 										<img :src="config.baseUrl +
 											'static/img/singles/coin_logos/' +
 											street.config.ticker.toLowerCase() +
