@@ -1,5 +1,5 @@
 <template>
-	<div id="vue-main" :class="{ 'dark-mode': darkMode }">		
+	<div id="vue-main" :class="{ 'dark-mode': darkMode }">
 		<transition name="fade">
 			<Landing :ref="'landing'" :class="loading ? 'loading-disabled' : ''"
 				v-if="loadError || (!loaded && (!loadVisualizer || loading) && !autoLoading)" />
@@ -66,7 +66,7 @@ export default {
 	},
 	mounted() {
 		this.nowInterval();
-		this.getAd();
+		// this.getAd();
 
 		//temp disable
 		setInterval(() => {
