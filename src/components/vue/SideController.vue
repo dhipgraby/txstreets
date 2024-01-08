@@ -11,7 +11,7 @@
 						appVersion
 						" width="48" height="48" />
 				</span>
-				<span>{{ coinConfig.coinName === "CBase" ? "Base" : coinConfig.coinName }}</span>
+				<span>{{ coinConfig.coinName }}</span>
 				<span class="icon is-normal"><i class="fas fa-chevron-down"></i></span>
 			</div>
 

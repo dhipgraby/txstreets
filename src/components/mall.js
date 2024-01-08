@@ -278,8 +278,8 @@ export class Street extends Phaser.Scene {
 				this.rollupStart();
 			})
 
-			this.blockFactory.socket.on("cbaseRollup", () => {
-				console.log('cbaseRollup EVENT!');
+			this.blockFactory.socket.on("baseRollup", () => {
+				console.log('baseRollup EVENT!');
 				if (window.txStreetPhaser.streetController.hidden || this.game.scene.isSleeping(this)) return;
 				this.rollupStart();
 			})

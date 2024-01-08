@@ -1434,10 +1434,10 @@ export const XMR = {
 	}),
 };
 
-export const CBASE = {
-	ticker: "CBASE",
-	coinName: "CBase",
-	coinSlug: "CBase",
+export const BASE = {
+	ticker: "BASE",
+	coinName: "Base",
+	coinSlug: "Base",
 	initialHouseY: 340,
 	color: "299FEF",
 	busColor: "299FEF",
@@ -1632,9 +1632,9 @@ export const commonTitleOverrides = {
 export const enabledConfig = {
 	ARBI,
 	BTC,
-	ETH,	
+	ETH,
 	BCH,
-	CBASE,
+	BASE,
 	// XMR,
 	// LTC	
 };

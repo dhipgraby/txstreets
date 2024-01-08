@@ -104,7 +104,7 @@ export default {
 		},
 		setAutoLoad() {
 			let pathArray = window.location.pathname.split("/");
-			if (this.autoLoad || pathArray[pathArray.length - 1] === "launch") {
+			if (this.autoLoad || pathArray[pathArray.length - 1] === "launchstreets") {
 				if (!pathArray.includes("d")) {
 					this.autoLoading = true;
 					this.loading = true;
@@ -188,6 +188,7 @@ export default {
 			} else {
 				return false;
 			}
+			
 			if (onlyName) return title;
 			title += " Transaction Visualizer - TxStreets.com";
 			return title;

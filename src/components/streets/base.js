@@ -1,13 +1,13 @@
 import { Street } from "../mall.js";
 import { toRes, ethNewTxSetDepending } from "../utils/";
-import { CBASE, ethUnits } from "../config.js";
+import { BASE, ethUnits } from "../config.js";
 import i18n from "../../i18n";
 import eventHub from "../vue/eventHub.js";
 import state from "../../wallet";
 
 export default class CBASEStreet extends Street {
     constructor(side) {
-        super(CBASE, side);
+        super(BASE, side);
     }
 
     init() {
@@ -251,4 +251,4 @@ export default class CBASEStreet extends Street {
     }
 }
 
-CBASEStreet.config = CBASE;
+CBASEStreet.config = BASE;

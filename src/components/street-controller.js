@@ -21,7 +21,7 @@ export const availableStreets = {
 	XMR: XMRStreet,
 	LTC: LTCStreet,
 	ARBI: ARBIStreet,
-	CBASE:CBASEStreet
+	BASE:CBASEStreet
 };
 
 export const enabledStreets = {};
